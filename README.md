@@ -1,5 +1,4 @@
-# AZ104Journal
-
+![Header](https://github.com/ShezzyBear/AZ104Journal/blob/main/AZJournal.gif)
 
 #### This is a journal of our **Azure Administrator** adventures :tram:
 

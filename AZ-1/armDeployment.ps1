@@ -12,4 +12,4 @@ New-AzResourceGroupDeployment `
   -Name $deploymentName `
   -TemplateFile $templateFile `
   -storageName az104armtemptest2 `
-  -storageSKU Standard_LRS
+  -storageSKU Standard_LRSw

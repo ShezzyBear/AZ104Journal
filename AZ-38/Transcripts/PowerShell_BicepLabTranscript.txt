@@ -1,0 +1,333 @@
+**********************
+PowerShell transcript start
+Start time: 20220721203201
+Username: DESKTOP-HM4V3LD\laxsh
+RunAs User: DESKTOP-HM4V3LD\laxsh
+Configuration Name: 
+Machine: DESKTOP-HM4V3LD (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll
+Process ID: 12196
+PSVersion: 7.2.5
+PSEdition: Core
+GitCommitId: 7.2.5
+OS: Microsoft Windows 10.0.19044
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.10032.0, 6.0.0, 6.1.0, 6.2.0, 7.0.0, 7.1.0, 7.2.5
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Transcript started, output file is C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38\Transcripts\PowerShell_transcript.DESKTOP-HM4V3LD.LgqS8gLV.20220721203201.txt
+PS C:\Windows\System32> Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+Forcing web requests to allow TLS v1.2 (Required for requests to Chocolatey.org)
+Getting latest version of the Chocolatey package for download.
+Not using proxy.
+Getting Chocolatey from https://community.chocolatey.org/api/v2/package/chocolatey/1.1.0.
+Downloading https://community.chocolatey.org/api/v2/package/chocolatey/1.1.0 to C:\Users\laxsh\AppData\Local\Temp\chocolatey\chocoInstall\chocolatey.zip
+Not using proxy.
+Extracting C:\Users\laxsh\AppData\Local\Temp\chocolatey\chocoInstall\chocolatey.zip to C:\Users\laxsh\AppData\Local\Temp\chocolatey\chocoInstall
+Installing Chocolatey on the local machine
+Creating ChocolateyInstall as an environment variable (targeting 'Machine') 
+  Setting ChocolateyInstall to 'C:\ProgramData\chocolatey'
+WARNING: It's very likely you will need to close and reopen your shell 
+  before you can use choco.
+WARNING: Not able to set permissions for C:\ProgramData\chocolatey.
+We are setting up the Chocolatey package repository.
+The packages themselves go to 'C:\ProgramData\chocolatey\lib'
+  (i.e. C:\ProgramData\chocolatey\lib\yourPackageName).
+A shim file for the command line goes to 'C:\ProgramData\chocolatey\bin'
+  and points to an executable in 'C:\ProgramData\chocolatey\lib\yourPackageName'.
+
+Creating Chocolatey folders if they do not already exist.
+WARNING: You can safely ignore errors related to missing log files when 
+  upgrading from a version of Chocolatey less than 0.9.9. 
+  'Batch file could not be found' is also safe to ignore. 
+  'The system cannot find the file specified' - also safe.
+chocolatey.nupkg file not installed in lib.
+ Attempting to locate it from bootstrapper.
+PATH environment variable does not have C:\ProgramData\chocolatey\bin in it. Adding...
+WARNING: Not setting tab completion: Profile file does not exist at 'C:\Users\laxsh\OneDrive\Documents\PowerShell\Microsoft.PowerShell_profile.ps1'.
+Chocolatey (choco.exe) is now ready.
+You can call choco from anywhere, command line or powershell by typing choco.
+Run choco /? for a list of functions.
+You may need to shut down and restart powershell and/or consoles
+ first prior to using choco.
+Ensuring Chocolatey commands are on the path
+Ensuring chocolatey.nupkg is in the lib folder
+PS C:\Windows\System32> choco install bicep
+Chocolatey v1.1.0
+Installing the following packages:
+bicep
+By installing, you accept licenses for the packages.
+Progress: Downloading bicep 0.8.9... 100%
+
+bicep v0.8.9 [Approved]
+bicep package files install completed. Performing other installation steps.
+ ShimGen has successfully created a shim for bicep.exe
+ The install of bicep was successful.
+  Software installed to 'C:\ProgramData\chocolatey\lib\bicep'
+
+Chocolatey installed 1/1 packages.
+ See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+PS C:\Windows\System32> Connect-AzAccount
+
+Account                    SubscriptionName TenantId                             Environment
+-------                    ---------------- --------                             -----------
+Shezzywezzy@tuliptreez.com AZ-104 Labs      (TenantId) AzureCloud
+
+PS C:\Windows\System32> $context = Get-AzSubscription -SubscriptionName 'AZ-104 Labs'
+Set-AzContext $context
+
+Name                                     Account            SubscriptionName   Environment        TenantId
+----                                     -------            ----------------   -----------        --------
+AZ-104 Labs (SubscriptionId) Shezzywezzy@tulip… AZ-104 Labs        AzureCloud         (TenantId)
+
+PS C:\Windows\System32> Get-AzSubscription
+
+Name                     Id                                   TenantId                             State
+----                     --                                   --------                             -----
+Tulip Treez Subscription (SubscriptionId) (TenantId) Enabled
+AZ-104 Labs              (SubscriptionId) (TenantId) Enabled
+
+PS C:\Windows\System32> $context = Get-AzSubscription -SubscriptionId {(SubscriptionId)}
+Set-AzContext $context
+>> TerminatingError(Get-AzSubscription): "Cannot evaluate parameter 'SubscriptionId' because its argument is specified as a script block and there is no input. A script block cannot be evaluated without input."
+
+Get-AzSubscription: Cannot evaluate parameter 'SubscriptionId' because its argument is specified as a script block and there is no input. A script block cannot be evaluated without input.
+
+Get-AzSubscription: Cannot evaluate parameter 'SubscriptionId' because its argument is specified as a script block and there is no input. A script block cannot be evaluated without input.
+
+Name                                     Account            SubscriptionName   Environment        TenantId
+----                                     -------            ----------------   -----------        --------
+AZ-104 Labs (SubscriptionId) Shezzywezzy@tulip… AZ-104 Labs        AzureCloud         (TenantId)
+
+PS C:\Windows\System32> $context = Get-AzSubscription -SubscriptionId (SubscriptionId)
+Set-AzContext $context
+
+Name                                     Account            SubscriptionName   Environment        TenantId
+----                                     -------            ----------------   -----------        --------
+AZ-104 Labs (SubscriptionId) Shezzywezzy@tulip… AZ-104 Labs        AzureCloud         (TenantId)
+
+PS C:\Windows\System32> Set-AzDefault -ResourceGroupName powershell-resource-group
+
+Id         : /subscriptions/(SubscriptionId)/resourceGroups/powershell-resource-group
+Name       : powershell-resource-group
+Properties : Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroupProperties
+Location   : eastus
+ManagedBy  : 
+Tags       : 
+
+
+PS C:\Windows\System32> New-AzResourceGroupDeployment -TemplateFile main.bicep
+PS C:\Windows\System32> TerminatingError(New-AzResourceGroupDeployment): "Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'C:\Windows\System32\main.bicep' because it does not exist."
+
+New-AzResourceGroupDeployment: Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'C:\Windows\System32\main.bicep' because it does not exist.
+
+New-AzResourceGroupDeployment: Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'C:\Windows\System32\main.bicep' because it does not exist.
+PS C:\Windows\System32> cd C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38
+PS C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38> New-AzResourceGroupDeployment -TemplateFile main.bicep
+WARNING: C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38\main.bicep(3,13) : Warning no-hardcoded-location: A resource location should not use a hard-coded string or variable value. Please use a parameter value, an expression, or the string 'global'. Found: 'westus3' [https://aka.ms/bicep/linter/no-hardcoded-location]
+
+DeploymentName          : main
+ResourceGroupName       : powershell-resource-group
+ProvisioningState       : Succeeded
+Timestamp               : 7/22/2022 12:44:41 AM
+Mode                    : Incremental
+TemplateLink            : 
+Parameters              : 
+Outputs                 : 
+DeploymentDebugLogLevel : 
+
+
+PS C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38> Get-AzResourceGroupDeployment -ResourceGroupName powershell-resource-group | Format-Table
+
+ResourceGroupName         OnErrorDeployment DeploymentName                    CorrelationId                        P
+                                                                                                                   r
+                                                                                                                   o
+                                                                                                                   v
+                                                                                                                   i
+                                                                                                                   s
+                                                                                                                   i
+                                                                                                                   o
+                                                                                                                   n
+                                                                                                                   i
+                                                                                                                   n
+                                                                                                                   g
+                                                                                                                   S
+                                                                                                                   t
+                                                                                                                   a
+                                                                                                                   t
+                                                                                                                   e
+-----------------         ----------------- --------------                    -------------                        -
+powershell-resource-group                   main                              3930646e-65c0-4d3f-a133-4d850a62b1c8 S
+powershell-resource-group                   addOutputs-07-11-2022             30222b11-342c-4ecd-96b2-4491d98ed2c2 S
+powershell-resource-group                   addSkuParameter-07-11-2022        56d77a34-7286-4517-bb4d-d964cc65decb S
+powershell-resource-group                   Add-Name-Parameter-07-11-2022     3f10d3c8-8429-49a9-8a5f-de105af14c32 S
+powershell-resource-group                   addstorage-07-11-2022             aa30c292-0213-443d-af2a-6d886975c2de S
+powershell-resource-group                   blanktemplate-07-11-2022          66970948-5c27-4bcb-9a4f-bde7c7205346 S
+powershell-resource-group                   azsebstorageaccount_1657495670586 5ac5fe82-b2da-46e2-8082-be4db9fbe792 S
+
+PS C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38> New-AzResourceGroupDeployment -TemplateFile main.bicep
+WARNING: C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38\main.bicep(3,13) : Warning no-hardcoded-location: A resource location should not use a hard-coded string or variable value. Please use a parameter value, an expression, or the string 'global'. Found: 'westus3' [https://aka.ms/bicep/linter/no-hardcoded-location]
+C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38\main.bicep(15,13) : Warning no-hardcoded-location: A resource location should not use a hard-coded string or variable value. Please use a parameter value, an expression, or the string 'global'. Found: 'westus3' [https://aka.ms/bicep/linter/no-hardcoded-location]
+C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38\main.bicep(23,13) : Warning no-hardcoded-location: A resource location should not use a hard-coded string or variable value. Please use a parameter value, an expression, or the string 'global'. Found: 'westus3' [https://aka.ms/bicep/linter/no-hardcoded-location]
+
+DeploymentName          : main
+ResourceGroupName       : powershell-resource-group
+ProvisioningState       : Succeeded
+Timestamp               : 7/22/2022 12:57:39 AM
+Mode                    : Incremental
+TemplateLink            : 
+Parameters              : 
+Outputs                 : 
+DeploymentDebugLogLevel : 
+
+
+PS C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38> Get-AzResourceGroupDeployment -ResourceGroupName powershell-resource-group | Format-Table
+
+ResourceGroupName         OnErrorDeployment DeploymentName                    CorrelationId                        P
+                                                                                                                   r
+                                                                                                                   o
+                                                                                                                   v
+                                                                                                                   i
+                                                                                                                   s
+                                                                                                                   i
+                                                                                                                   o
+                                                                                                                   n
+                                                                                                                   i
+                                                                                                                   n
+                                                                                                                   g
+                                                                                                                   S
+                                                                                                                   t
+                                                                                                                   a
+                                                                                                                   t
+                                                                                                                   e
+-----------------         ----------------- --------------                    -------------                        -
+powershell-resource-group                   main                              b95bd597-4e61-4fb0-a599-41d111fcba81 S
+powershell-resource-group                   addOutputs-07-11-2022             30222b11-342c-4ecd-96b2-4491d98ed2c2 S
+powershell-resource-group                   addSkuParameter-07-11-2022        56d77a34-7286-4517-bb4d-d964cc65decb S
+powershell-resource-group                   Add-Name-Parameter-07-11-2022     3f10d3c8-8429-49a9-8a5f-de105af14c32 S
+powershell-resource-group                   addstorage-07-11-2022             aa30c292-0213-443d-af2a-6d886975c2de S
+powershell-resource-group                   blanktemplate-07-11-2022          66970948-5c27-4bcb-9a4f-bde7c7205346 S
+powershell-resource-group                   azsebstorageaccount_1657495670586 5ac5fe82-b2da-46e2-8082-be4db9fbe792 S
+
+PS C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38> New-AzResourceGroupDeployment `
+  -TemplateFile main.bicep `
+  -environmentType nonprod
+
+New-AzResourceGroupDeployment: 9:14:42 PM - Error: Code=InvalidTemplateDeployment; Message=The template deployment 'main' is not valid according to the validation procedure. The tracking id is '6c5d89a5-e384-4a7e-9387-a64d9cf0422a'. See inner errors for details.
+
+New-AzResourceGroupDeployment: 9:14:42 PM - Error: Code=InvalidTemplateDeployment; Message=The template deployment 'main' is not valid according to the validation procedure. The tracking id is '6c5d89a5-e384-4a7e-9387-a64d9cf0422a'. See inner errors for details.
+
+
+New-AzResourceGroupDeployment: 9:14:44 PM - Error: Code=PreflightValidationCheckFailed; Message=Preflight validation failed. Please refer to the details for the specific errors.
+
+New-AzResourceGroupDeployment: 9:14:44 PM - Error: Code=PreflightValidationCheckFailed; Message=Preflight validation failed. Please refer to the details for the specific errors.
+
+
+New-AzResourceGroupDeployment: 9:14:45 PM - Error: Code=AccountNameInvalid; Message=azbiceplablaunchzcgpiw7jeh4e2 is not a valid storage account name. Storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+
+New-AzResourceGroupDeployment: 9:14:45 PM - Error: Code=AccountNameInvalid; Message=azbiceplablaunchzcgpiw7jeh4e2 is not a valid storage account name. Storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+
+
+New-AzResourceGroupDeployment: The deployment validation failed
+
+New-AzResourceGroupDeployment: The deployment validation failed
+PS C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38> New-AzResourceGroupDeployment `
+  -TemplateFile main.bicep `
+  -environmentType nonprod
+
+New-AzResourceGroupDeployment: 9:17:08 PM - Error: Code=InvalidTemplateDeployment; Message=The template deployment 'main' is not valid according to the validation procedure. The tracking id is 'f91aa5d8-877c-410e-9447-7a9d7ff3d2cb'. See inner errors for details.
+
+New-AzResourceGroupDeployment: 9:17:08 PM - Error: Code=InvalidTemplateDeployment; Message=The template deployment 'main' is not valid according to the validation procedure. The tracking id is 'f91aa5d8-877c-410e-9447-7a9d7ff3d2cb'. See inner errors for details.
+
+
+New-AzResourceGroupDeployment: 9:17:09 PM - Error: Code=PreflightValidationCheckFailed; Message=Preflight validation failed. Please refer to the details for the specific errors.
+
+New-AzResourceGroupDeployment: 9:17:09 PM - Error: Code=PreflightValidationCheckFailed; Message=Preflight validation failed. Please refer to the details for the specific errors.
+
+
+New-AzResourceGroupDeployment: 9:17:10 PM - Error: Code=AccountNameInvalid; Message=powershell-resource-groupzcgpiw7jeh4e2 is not a valid storage account name. Storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+
+New-AzResourceGroupDeployment: 9:17:10 PM - Error: Code=AccountNameInvalid; Message=powershell-resource-groupzcgpiw7jeh4e2 is not a valid storage account name. Storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+
+
+New-AzResourceGroupDeployment: The deployment validation failed
+
+New-AzResourceGroupDeployment: The deployment validation failed
+PS C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38> New-AzResourceGroupDeployment `
+  -TemplateFile main.bicep `
+  -environmentType nonprod
+
+New-AzResourceGroupDeployment: 9:17:55 PM - Error: Code=InvalidTemplateDeployment; Message=The template deployment 'main' is not valid according to the validation procedure. The tracking id is '52c6e380-b0b4-4487-a08a-8a6fe18c1b6e'. See inner errors for details.
+
+New-AzResourceGroupDeployment: 9:17:55 PM - Error: Code=InvalidTemplateDeployment; Message=The template deployment 'main' is not valid according to the validation procedure. The tracking id is '52c6e380-b0b4-4487-a08a-8a6fe18c1b6e'. See inner errors for details.
+
+
+New-AzResourceGroupDeployment: 9:17:56 PM - Error: Code=PreflightValidationCheckFailed; Message=Preflight validation failed. Please refer to the details for the specific errors.
+
+New-AzResourceGroupDeployment: 9:17:56 PM - Error: Code=PreflightValidationCheckFailed; Message=Preflight validation failed. Please refer to the details for the specific errors.
+
+
+New-AzResourceGroupDeployment: 9:17:57 PM - Error: Code=AccountNameInvalid; Message=azbiceplablaunch9154zcgpiw7jeh4e2 is not a valid storage account name. Storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+
+New-AzResourceGroupDeployment: 9:17:57 PM - Error: Code=AccountNameInvalid; Message=azbiceplablaunch9154zcgpiw7jeh4e2 is not a valid storage account name. Storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+
+
+New-AzResourceGroupDeployment: The deployment validation failed
+
+New-AzResourceGroupDeployment: The deployment validation failed
+PS C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38> New-AzResourceGroupDeployment `
+  -TemplateFile main.bicep `
+  -environmentType nonprod
+
+DeploymentName          : main
+ResourceGroupName       : powershell-resource-group
+ProvisioningState       : Succeeded
+Timestamp               : 7/22/2022 1:22:11 AM
+Mode                    : Incremental
+TemplateLink            : 
+Parameters              : 
+                          Name                  Type                       Value
+                          ====================  =========================  ==========
+                          location              String                     "westus3"
+                          storageAccountName    String                     "azlabzcgpiw7jeh4e2"
+                          appServiceAppName     String                     "azbiceplablaunchzcgpiw7jeh4e2"
+                          environmentType       String                     "nonprod"
+                          
+Outputs                 : 
+DeploymentDebugLogLevel : 
+
+
+PS C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38> New-AzResourceGroupDeployment `
+  -TemplateFile main.bicep `
+  -environmentType nonprod
+
+DeploymentName          : main
+ResourceGroupName       : powershell-resource-group
+ProvisioningState       : Succeeded
+Timestamp               : 7/22/2022 1:39:41 AM
+Mode                    : Incremental
+TemplateLink            : 
+Parameters              : 
+                          Name                  Type                       Value
+                          ====================  =========================  ==========
+                          location              String                     "westus3"
+                          storageAccountName    String                     "azlabzcgpiw7jeh4e2"
+                          appServiceAppName     String                     "azbiceplablaunchzcgpiw7jeh4e2"
+                          environmentType       String                     "nonprod"
+                          
+Outputs                 : 
+                          Name                     Type                       Value
+                          =======================  =========================  ==========
+                          appServiceAppHostName    String
+                          "azbiceplablaunchzcgpiw7jeh4e2.azurewebsites.net"
+                          
+DeploymentDebugLogLevel : 
+
+
+PS C:\Users\laxsh\OneDrive\Documents\Github\AZ104Journal\AZ-38> Stop-Transcript
+**********************
+PowerShell transcript end
+End time: 20220721214638
+**********************
